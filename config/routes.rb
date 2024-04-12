@@ -3,13 +3,7 @@ Rails.application.routes.draw do
   #   get '/:short_code', to: 'urls#redirect', as: :bit_redirect
   # end
   
-  get '/:short_code', to: 'urls#redirect'
-  # Define the route for redirecting from url.softalx.com to shorturl.softalx.com
-  constraints(host: 'url.softalx.com') do
-    get '/', to: redirect('https://shorturl.softalx.com')  # Redirect root path
-
-    get '/:short_code', to: 'urls#redirect'  # Handle shortened URLs
-  end
+ 
   
   namespace :account do
     get 'dashboard', to: 'dashboard#home'
@@ -18,8 +12,6 @@ Rails.application.routes.draw do
     get 'settings/change_password', to: 'setting#change_password'
     get 'settings/profile', to: 'setting#profile'
 
-    resources :urls, param: :short_code
-    # get '/:short_code', to: redirect('/%{short_code}')
   end
 
 
@@ -47,9 +39,6 @@ Rails.application.routes.draw do
     get 'settings/account', to: 'setting#account'
     get 'settings/password', to: 'setting#admin_password'
     get 'settings/site_details', to: 'setting#site_details'
-    get 'settings/currency_pairs', to: 'setting#currency_pairs'
-    get 'settings/payment_method', to: 'setting#payment_methods'
-
   end
 
   devise_for :accounts, controllers: {
@@ -61,7 +50,7 @@ Rails.application.routes.draw do
     sign_in: 'login',
     sign_out: 'logout',
     password: 'secret',
-    registration: 'account',
+    registration: 'students',
     sign_up: 'sign_up'
   }
 

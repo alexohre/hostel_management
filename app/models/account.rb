@@ -12,7 +12,6 @@ class Account < ApplicationRecord
   validate :date_of_birth_must_be_past_18_years
   validates :first_name, :last_name, :username, :address, :state, :country, :gender, presence: true, unless: :new_record?
 
-  has_many :urls, class_name: 'Url', foreign_key: 'account_id', dependent: :destroy
   
   private
 

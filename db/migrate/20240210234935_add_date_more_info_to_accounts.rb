@@ -7,7 +7,7 @@ class AddDateMoreInfoToAccounts < ActiveRecord::Migration[7.0]
     add_column :accounts, :last_name, :string
     add_column :accounts, :phone_number, :string
     add_column :accounts, :address, :text
-    add_column :accounts, :zip_code, :string
+    add_column :accounts, :lga, :string
     add_column :accounts, :state, :string
     add_column :accounts, :country, :string
   end
