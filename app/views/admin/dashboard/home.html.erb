@@ -52,7 +52,7 @@
                 
               </div>
               <span>Deposits</span>
-              <h3 class="card-title text-nowrap mb-1"><%= @total_deposit %></h3>
+              <h3 class="card-title text-nowrap mb-1"><%= 0 %></h3>
             </div>
           </div>
         </div>
@@ -110,109 +110,7 @@
           </div>
         </div>
       </div>
-      <div class="card mt-4">
-        <div class="row row-bordered g-0">
-          <div class="col">
-            <h5 class="card-header m-0 me-2 pb-3">(5) Recent Withdrawals</h5>
-            <div class="table-responsive text-nowrap">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Reference</th>
-                    <th>Amount</th>
-                    <th>User</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody class="table-border-bottom-0">
-                  <% if @recent_withdrawals.present? %>
-                    <% @recent_withdrawals.each do |withdraw| %>
-                      <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><%= withdraw.order_id %></strong></td>
-                        <td><%= number_to_currency(withdraw.amount, precision: 2) %></td>
-                        <td>
-                          <% full_name = "#{withdraw.account.first_name} #{withdraw.account.last_name}" if withdraw.account.first_name.present? && withdraw.account.last_name.present? %>
-                          <%= full_name.present? ? full_name : "Awaiting names" %>
-                        </td>
-                        <td>
-                          <% if withdraw.status == "Pending" %>
-                              <span class="badge bg-label-warning me-1"><%= withdraw.status %></span>
-                            <% elsif withdraw.status == "Approved" %>
-                              <span class="badge bg-label-success me-1"><%= withdraw.status %></span>
-                            <% elsif withdraw.status == "Cancelled" %>
-                            <span class="badge bg-label-danger me-1"><%= withdraw.status %></span>
-                            <% end %>
-                        </td>
-                        <td>
-                          <%= withdraw.created_at.strftime("	%d-%m-%Y ") %>
-                        </td>
-                      </tr>
-                    <% end %>
-                  <% else %>
-                    <tr >
-                      <td colspan="4" class="text-center fs-3 ">No Withdrawals Yet </td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card mt-4">
-        <div class="row row-bordered g-0">
-          <div class="col">
-            <h5 class="card-header m-0 me-2 pb-3">(5) Recent Trades</h5>
-            <div class="table-responsive text-nowrap">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Reference</th>
-                    <th>Amount</th>
-                    <th>User</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody class="table-border-bottom-0">
-                  <% if @recent_trades.present? %>
-                  <% @recent_trades.each do |trade| %>
-                    <tr>
-                      <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><%= trade.order_id %></strong></td>
-                      <td><%= number_to_currency(trade.amount, precision: 2) %></td>
-                      <td>
-                        <% full_name = "#{trade.account&.first_name} #{trade.account&.last_name}" if trade.account&.first_name.present? && trade.account&.last_name.present? %>
-
-                        <%= full_name.present? ? full_name : "Awaiting names" %>
-
-                      </td>
-                      <td>
-                        <% if trade.status == "running" %>
-                          <span class="badge bg-label-warning me-1"><%= trade.status %></span>
-                        <% elsif trade.status == "completed" %>
-                          <span class="badge bg-label-success me-1"><%= trade.status %></span>
-                        <% elsif trade.status == "cancelled" %>
-                         <span class="badge bg-label-danger me-1"><%= trade.status %></span>
-                        <% end %>
-                      </td>
-                      <td>
-                        <%= trade.created_at.strftime("	%d-%m-%Y ") %>
-                      </td>
-                    </tr>
-                    
-                  <% end %>
-                  <% else %>
-                    <tr >
-                      <td colspan="4" class="text-center fs-3 ">No Trades Yet </td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+     
     </div>
 
     
@@ -224,12 +122,12 @@
             <div class="card-body">
               <div class="card-title d-flex align-items-start justify-content-between">
                 <div class="avatar flex-shrink-0">
-                 <%= image_tag "img/icons/unicons/wallet-info.png", alt: "Credit Card", class: "rounded" %>
+                 <i class='bx bx-group rounded fs-1'></i>
                 </div>
                 
               </div>
-              <span class="d-block mb-1">Withdrawals</span>
-              <h3 class="card-title text-nowrap mb-2"><%= @total_withdrawal %></h3>
+              <span class="d-block mb-1">Hnd</span>
+              <h3 class="card-title text-nowrap mb-2"><%= 0 %></h3>
             </div>
           </div>
         </div>
@@ -238,12 +136,12 @@
             <div class="card-body">
               <div class="card-title d-flex align-items-start justify-content-between">
                 <div class="avatar flex-shrink-0">
-                  <%= image_tag "img/icons/unicons/chart-success.png", alt: "chart success", class: "rounded" %>
+                  <i class='bx bx-group rounded fs-1'></i>
                 </div>
                 
               </div>
-              <span class="fw-semibold d-block mb-1">Trades</span>
-              <h3 class="card-title mb-2"><%= @total_trades %></h3>
+              <span class="fw-semibold d-block mb-1">Nd</span>
+              <h3 class="card-title mb-2"><%= 0 %></h3>
             </div>
           </div>
         </div>

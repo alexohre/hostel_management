@@ -56,7 +56,7 @@
 					</g>
 				</svg>
 			</span>
-			<span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+			<span class="app-brand-text demo menu-text fw-bolder ms-2">Hostel</span>
 		</a>
 		<a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
 			<i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -92,126 +92,57 @@
 				</ul>
 			</li>
 			<!-- Extended components -->
-			<li class="menu-item <%= 'active open' if request.path == admin_trade_active_path || request.path === admin_trade_inactive_path %>">
-				<a href="javascript:void(0)" class="menu-link menu-toggle">
-					<i class="menu-icon tf-icons bx bx-candles"></i>
-					<div data-i18n="Extended UI">Trades</div>
+			<li class="menu-item <%= 'active open' if request.path == admin_users_path %>">
+				<a href="javascript:void(0);" class="menu-link menu-toggle">
+					<i class="menu-icon tf-icons bx bx-user"></i>
+					<div data-i18n="Account Settings">Users</div>
 				</a>
 				<ul class="menu-sub">
-					<li class="menu-item <%= 'active' if request.path == admin_trade_active_path %>">
-						<a href="<%= admin_trade_active_path %>" class="menu-link" data-turbo="false">
-							<div data-i18n="Perfect Scrollbar">Active</div>
-						</a>
-					</li>
-					<li class="menu-item <%= 'active' if request.path == admin_trade_inactive_path %>">
-						<a href="<%= admin_trade_inactive_path %>" class="menu-link" data-turbo="false">
-							<div data-i18n="Text Divider">Inactive</div>
+					<li class="menu-item <%= 'active' if request.path == admin_users_path %>">
+						<a href="<%= admin_users_path%>" class="menu-link" data-turbo="false">
+							<div data-i18n="Account">Overview</div>
 						</a>
 					</li>
 				</ul>
 			</li>
 			<!-- Extended components -->
-			<% if defined?(@deposit) && @deposit.present? %>
-				<li class="menu-item <%= 'active open' if request.path == admin_deposit_pending_path || request.path == admin_deposit_approved_path || request.path == admin_deposit_declined_path || request.path == admin_deposit_path(@deposit) %>">
-				<% else %>
-					<li class="menu-item <%= 'active open' if request.path == admin_deposit_pending_path || request.path == admin_deposit_approved_path || request.path == admin_deposit_declined_path %>">
-					<% end %>
-					<a href="javascript:void(0)" class="menu-link menu-toggle">
-						<i class="menu-icon tf-icons bx bx-wallet"></i>
-						<div data-i18n="Extended UI">Deposits</div>
-					</a>
-					<ul class="menu-sub">
-						<li class="menu-item <%= 'active' if request.path == admin_deposit_pending_path %>">
-							<a href="<%= admin_deposit_pending_path %>" class="menu-link" data-turbo='false'>
-								<div data-i18n="Perfect Scrollbar">Pending</div>
-							</a>
-						</li>
-						<li class="menu-item <%= 'active' if request.path == admin_deposit_approved_path %>">
-							<a href="<%= admin_deposit_approved_path %>" class="menu-link" data-turbo='false'>
-								<div data-i18n="Text Divider">Approved</div>
-							</a>
-						</li>
-						<li class="menu-item <%= 'active' if request.path == admin_deposit_declined_path %>">
-							<a href="<%= admin_deposit_declined_path %>" class="menu-link" data-turbo='false'>
-								<div data-i18n="Text Divider">Declined</div>
-							</a>
-						</li>
-					</ul>
-				</li>
-				<!-- Extended components -->
-				<% if defined?(@withdrawal) && @withdrawal.present? %>
-					<li class="menu-item <%= 'active open' if request.path == admin_withdrawal_pending_path || request.path == admin_withdrawal_approved_path || request.path == admin_withdrawal_declined_path || request.path == admin_withdrawal_path(@withdrawal) %>">
-					<% else %>
-						<li class="menu-item <%= 'active open' if request.path == admin_withdrawal_pending_path || request.path == admin_withdrawal_approved_path || request.path == admin_withdrawal_declined_path %>">
-						<% end %>
-						<a href="javascript:void(0)" class="menu-link menu-toggle">
-							<i class="menu-icon tf-icons bx bx-money-withdraw"></i>
-							<div data-i18n="Extended UI">Withdrawals</div>
-						</a>
-						<ul class="menu-sub">
-							<li class="menu-item <%= 'active' if request.path == admin_withdrawal_pending_path %>">
-								<a href="<%= admin_withdrawal_pending_path %>" class="menu-link" data-turbo='false'>
-									<div data-i18n="Perfect Scrollbar">Pending</div>
-								</a>
-							</li>
-							<li class="menu-item <%= 'active' if request.path == admin_withdrawal_approved_path %>">
-								<a href="<%= admin_withdrawal_approved_path %>" class="menu-link" data-turbo='false'>
-									<div data-i18n="Text Divider">Approved</div>
-								</a>
-							</li>
-							<li class="menu-item <%= 'active' if request.path == admin_withdrawal_declined_path %>">
-								<a href="<%= admin_withdrawal_declined_path %>" class="menu-link" data-turbo='false'>
-									<div data-i18n="Text Divider">Declined</div>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<!-- Components -->
-					<!-- Cards -->
-					<li class="menu-item <%= 'active' if request.path == admin_emails_path || request.path == admin_email_new_path %>">
-						<a href="<%= admin_emails_path %>" class="menu-link" data-turbo="false">
-							<i class="menu-icon tf-icons bx bx-envelope"></i>
-							<div data-i18n="Basic">Emails</div>
+			<!-- Extended components -->
+			<!-- Components -->
+			<!-- Cards -->
+			<li class="menu-item <%= 'active' if request.path == admin_emails_path || request.path == admin_email_new_path %>">
+				<a href="<%= admin_emails_path %>" class="menu-link" data-turbo="false">
+					<i class="menu-icon tf-icons bx bx-envelope"></i>
+					<div data-i18n="Basic">Emails</div>
+				</a>
+			</li>
+			<!-- User interface -->
+			<li class="menu-item <%= 'active open' if request.path == admin_settings_account_path || request.path == admin_settings_site_details_path || request.path == admin_settings_password_path %>">
+				<a href="javascript:void(0)" class="menu-link menu-toggle">
+					<i class="menu-icon tf-icons bx bx-cog"></i>
+					<div data-i18n="User interface">Settings</div>
+				</a>
+				<ul class="menu-sub">
+					<li class="menu-item <%= 'active' if request.path == admin_settings_account_path %>">
+						<a href="<%= admin_settings_account_path %>" class="menu-link" data-turbo="false">
+							<div data-i18n="Accordion">Account</div>
 						</a>
 					</li>
-					<!-- User interface -->
-					<li class="menu-item <%= 'active open' if request.path == admin_settings_account_path || request.path == admin_settings_site_details_path || request.path == admin_settings_currency_pairs_path || request.path == admin_settings_payment_method_path || request.path == admin_settings_password_path %>">
-						<a href="javascript:void(0)" class="menu-link menu-toggle">
-							<i class="menu-icon tf-icons bx bx-cog"></i>
-							<div data-i18n="User interface">Settings</div>
+					<li class="menu-item <%= 'active' if request.path == admin_settings_password_path %>">
+						<a href="<%= admin_settings_password_path %>" class="menu-link" data-turbo="false">
+							<div data-i18n="Accordion">Password</div>
 						</a>
-						<ul class="menu-sub">
-							<li class="menu-item <%= 'active' if request.path == admin_settings_account_path %>">
-								<a href="<%= admin_settings_account_path %>" class="menu-link" data-turbo="false">
-									<div data-i18n="Accordion">Account</div>
-								</a>
-							</li>
-							<li class="menu-item <%= 'active' if request.path == admin_settings_password_path %>">
-								<a href="<%= admin_settings_password_path %>" class="menu-link" data-turbo="false">
-									<div data-i18n="Accordion">Password</div>
-								</a>
-							</li>
-							<li class="menu-item <%= 'active' if request.path == admin_settings_payment_method_path %>">
-								<a href="<%= admin_settings_payment_method_path %>" class="menu-link" data-turbo="false">
-									<div data-i18n="Alerts">Payment Methods</div>
-								</a>
-							</li>
-							<%# <li class="menu-item">
+					</li>
+					<%# <li class="menu-item">
 					<a href="#" class="menu-link">
 						<div data-i18n="Badges">Subscription Plans</div>
 					</a>
 				</li> %>
-							<li class="menu-item <%= 'active' if request.path == admin_settings_currency_pairs_path %>">
-								<a href="<%= admin_settings_currency_pairs_path %>" class="menu-link" data-turbo="false">
-									<div data-i18n="Buttons">Trade Currency Pairs</div>
-								</a>
-							</li>
-							<li class="menu-item <%= 'active' if request.path == admin_settings_site_details_path %>">
-								<a href="<%= admin_settings_site_details_path %>" class="menu-link" data-turbo="false">
-									<div data-i18n="Carousel">Contact Details</div>
-								</a>
-							</li>
-						</ul>
+					<li class="menu-item <%= 'active' if request.path == admin_settings_site_details_path %>">
+						<a href="<%= admin_settings_site_details_path %>" class="menu-link" data-turbo="false">
+							<div data-i18n="Carousel">Contact Details</div>
+						</a>
 					</li>
 				</ul>
-			</aside>
+			</li>
+		</ul>
+	</aside>
