@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     get 'settings/account', to: 'setting#account'
     get 'settings/password', to: 'setting#admin_password'
     get 'settings/site_details', to: 'setting#site_details'
+
+    resources :room_types
   end
 
   devise_for :accounts, controllers: {

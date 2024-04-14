@@ -1,0 +1,51 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+	<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span>Edit Room Type</h4>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md mb-4 mb-md-0">
+				<div class="accordion mt-3" id="accordionExample">
+					<div class="row">
+						<div class="col-md-6 mx-auto">
+							<div class="card mb-4">
+								<div class="card-body">
+									<%= form_with(model: [:admin, @room_type], url: admin_room_type_path(@room_type), method: :patch, data: { turbo: false}) do |f| %>
+										<% if @room_type.errors.any? %>
+											<div id="error_explanation">
+												<div class="alert alert-danger alert-dismissible pb-1" role="alert">
+													<ul>
+														<% @room_type.errors.full_messages.each do |message| %>
+															<li><%= message %></li>
+														<% end %>
+														<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+													</ul>
+												</div>
+											</div>
+										<% end %>
+										<div class="mb-3">
+											<label for="defaultFormControlInput" class="form-label">Hostel</label>
+											<%#= f.select :hostel_type_id, options_for_select(@hostel_types.map { |ht| [ht.name, ht.id] }), { prompt: "Select hostel" }, class: "form-select" %>
+											<%= f.collection_select :hostel_type_id, @hostel_types, :id, :name, { prompt: "Select Hostel Type" }, class: "form-select" %>
+										</div>
+										<div class="mb-3">
+											<label for="defaultFormControlInput" class="form-label">Name</label>
+											<%= f.text_field :name, class: "form-control", placeholder: "Enter Email Subject" %>
+										</div>
+										<div class="mb-3">
+											<label for="defaultFormControlInput" class="form-label">Price</label>
+											<%= f.text_field :price, class: "form-control", placeholder: "Enter Room Type Price eg. 10,000" %>
+										</div>
+										<div class="demo-inline-spacing">
+											<button type="submit" class="btn btn-primary float-end" data-turbo="false">
+												<span class="tf-icons bx bx-mail-send"></span>&nbsp; Update
+											</button>
+										</div>
+									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

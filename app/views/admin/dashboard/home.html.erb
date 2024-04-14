@@ -37,7 +37,7 @@
                 </div>
                 
               </div>
-              <span class="fw-semibold d-block mb-1">Users</span>
+              <span class="fw-semibold d-block mb-1">Students</span>
               <h3 class="card-title mb-2"><%= @total_acc %></h3>
             </div>
           </div>
@@ -47,11 +47,11 @@
             <div class="card-body">
               <div class="card-title d-flex align-items-start justify-content-between">
                 <div class="avatar flex-shrink-0">
-                  <%= image_tag "img/icons/unicons/wallet-info.png", alt: "Credit Card", class: "rounded" %>
+                  <i class='bx bx-group rounded fs-1'></i>
                 </div>
                 
               </div>
-              <span>Deposits</span>
+              <span>Staffs</span>
               <h3 class="card-title text-nowrap mb-1"><%= 0 %></h3>
             </div>
           </div>
@@ -63,15 +63,16 @@
       <div class="card">
         <div class="row row-bordered g-0">
           <div class="col">
-            <h5 class="card-header m-0 me-2 pb-3">(5) Recent Deposits</h5>
+            <h5 class="card-header m-0 me-2 pb-3">(5) Recent Accommodations</h5>
             <div class="table-responsive text-nowrap">
               <table class="table table-striped">
                 <thead>
                   <tr>
                     <th>Reference</th>
                     <th>Amount</th>
-                    <th>User</th>
-                    <th>Status</th>
+                    <th>Students</th>
+                    <th>Hostel</th>
+                    <th>Room</th>
                     <th>Date</th>
                   </tr>
                 </thead>
@@ -80,6 +81,7 @@
                     <% @recent_deposits.each do |deposit| %>
                       <tr>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><%= deposit.order_id %></strong></td>
+                        <td><%= number_to_currency(deposit.amount, precision: 2) %></td>
                         <td><%= number_to_currency(deposit.amount, precision: 2) %></td>
                         <td>
                           <% full_name = "#{deposit.account&.first_name} #{deposit.account&.last_name}" if deposit.account&.first_name.present? && deposit.account&.last_name.present? %>
@@ -101,7 +103,7 @@
                     <% end %>
                   <% else %>
                     <tr >
-                      <td colspan="4" class="text-center fs-3 ">No Deposits Yet </td>
+                      <td colspan="6" class="text-center fs-3 ">No Accommodations Yet </td>
                     </tr>
                   <% end %>
                 </tbody>
@@ -126,7 +128,7 @@
                 </div>
                 
               </div>
-              <span class="d-block mb-1">Hnd</span>
+              <span class="d-block mb-1">Hnd Students</span>
               <h3 class="card-title text-nowrap mb-2"><%= 0 %></h3>
             </div>
           </div>
@@ -140,7 +142,7 @@
                 </div>
                 
               </div>
-              <span class="fw-semibold d-block mb-1">Nd</span>
+              <span class="fw-semibold d-block mb-1">Nd Students</span>
               <h3 class="card-title mb-2"><%= 0 %></h3>
             </div>
           </div>

@@ -5,9 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-acc = Account.create!(email: "ella@rose.com", password: 123456 )
-puts "Account created"
+# acc = Account.create!(email: "ella@rose.com", password: 123456 )
+# puts "Account created"
 
-acc.confirm 
-puts "Account confirmed"
+# acc.confirm 
+# puts "Account confirmed"
 
+puts "creating hostel type.."
+hos = HostelType.create!([{name: "Male Hostel"}, {name: "Female Hostel"}])
+puts "hostel type created!"

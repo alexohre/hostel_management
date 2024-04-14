@@ -9,6 +9,10 @@ class Account < ApplicationRecord
 
   has_one_attached :avatar, dependent: :destroy
 
+  belongs_to :bed
+
+  enum role: [:admin, :portal, :warden, :supervisor]
+
   validate :date_of_birth_must_be_past_18_years
   validates :first_name, :last_name, :username, :address, :state, :country, :gender, presence: true, unless: :new_record?
 
