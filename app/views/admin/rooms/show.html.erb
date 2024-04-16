@@ -1,0 +1,31 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+	<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span>Room</h4>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md mb-4 mb-md-0">
+				<div class="accordion mt-3" id="accordionExample">
+					<div class="row">
+						<div class="col-md-6 mx-auto">
+							<div class="card mb-4">
+								<div class="card-body">
+									<h1>Room No: <strong><%= @room.room_number %></strong></h1>
+									<h3>Available Beds</h3>
+									<% if @beds.all?(&:reserved?) %>
+										Fully Occupied
+									<% else %>
+										<% @beds.each do |bed| %>
+											<button type="button" class="btn <%= bed.reserved? ? 'btn-secondary disabled' : 'btn-outline-primary' %>">
+												<i class='bx bx-bed'></i>
+												<%= bed.bed_name %>
+											</button>
+										<% end %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -5,6 +5,10 @@ class RoomType < ApplicationRecord
   validates :name, :price, presence: true
   validate :unique_name_within_hostel_type
 
+  def name_with_hostel
+    "#{hostel_type.name} - #{name}" # Assuming hostel has a name attribute
+  end
+
   private
 
   def unique_name_within_hostel_type

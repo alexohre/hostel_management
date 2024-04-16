@@ -1,0 +1,94 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+	<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span>Rooms</h4>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md mb-4 mb-md-0">
+				<div class="accordion mt-3" id="accordionExample">
+					<div class="row">
+						<div class="col-md-5">
+							<div class="card mb-4">
+								<div class="card-body">
+									<%= form_with(model: [:admin, @room], url: admin_rooms_path, data: { turbo: false}) do |f| %>
+										<% if @room.errors.any? %>
+											<div id="error_explanation">
+												<div class="alert alert-danger alert-dismissible pb-1" role="alert">
+													<ul>
+														<% @room.errors.full_messages.each do |message| %>
+															<li><%= message %></li>
+														<% end %>
+														<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+													</ul>
+												</div>
+											</div>
+										<% end %>
+										<div class="mb-3">
+											<label for="defaultFormControlInput" class="form-label">Hostel Room Type</label>
+											<%= f.collection_select :room_type_id, @room_types, :id, :name_with_hostel, { prompt: "Select Room Type" }, class: "form-select", required: true %>
+										</div>
+										<div class="mb-3">
+											<label for="defaultFormControlInput" class="form-label">Number of Rooms</label>
+											<%= f.number_field :number_of_rooms, class: "form-control", placeholder: "Enter number of rooms eg 10" %>
+										</div>
+										<div class="mb-3">
+											<label for="defaultFormControlInput" class="form-label">Starting from</label>
+											<%= f.number_field :starting_number, class: "form-control", placeholder: "eg 101" %>
+										</div>
+										<div class="mb-3">
+											<label for="defaultFormControlInput" class="form-label">Number of Beds</label>
+											<%= f.number_field :number_of_beds, class: "form-control", placeholder: "eg 2" %>
+										</div>
+										<div class="demo-inline-spacing">
+											<button type="submit" class="btn btn-primary float-end" data-turbo="false">
+												<span class="tf-icons bx bx-plus"></span>&nbsp; Create
+											</button>
+										</div>
+									<% end %>
+								</div>
+							</div>
+						</div>
+						<%# photo %>
+						<div class="col-md-7">
+							<div class="card mb-4">
+								<div class="card-body">
+									<div class="table-responsive text-nowrap">
+										<table class="table table-striped">
+											<thead>
+												<tr>
+													<th>Room No:</th>
+													<th>Room Status</th>
+													<th>Room Type</th>
+													<th>Room Beds</th>
+													<th>Actions</th>
+												</tr>
+											</thead>
+											<tbody class="table-border-bottom-0">
+												<% if @rooms.present? %>
+													<% @rooms.each do |room| %>
+														<tr>
+															<td><%= room.room_number %></td>
+															<td><%= room.status %></td>
+															<% initials = room.room_type.hostel_type.name.split.map(&:first).join %>
+															<td><%= initials %> - <%= room.room_type.name %></td>
+															<td><%= room.number_of_beds %></td>
+															<td><%= link_to "Show", admin_room_path(room), class: "btn btn-sm btn-secondary" %> <%= link_to "Edit", edit_admin_room_path(room), class: "btn btn-sm btn-info" %> <%= link_to "Delete", "", class: "btn btn-sm btn-danger" %></td>
+															<!-- Assuming room_type is associated with Room as 'room_type' -->
+														</tr>
+													<% end %>
+												<% else %>
+													<tr>
+														<td colspan="3">No rooms found</td>
+													</tr>
+												<% end %>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<%= render 'admin/shared/pagy', locals: {pagy: @pagy} %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

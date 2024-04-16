@@ -124,62 +124,66 @@
 					</ul>
 				</li>
 				<!-- Extended components -->
-				<li class="menu-item <%= 'active open' if request.path == admin_users_path %>">
-					<a href="javascript:void(0);" class="menu-link menu-toggle">
-						<i class="menu-icon tf-icons bx bx-building"></i>
-						<div data-i18n="Account Settings">Rooms</div>
-					</a>
-					<ul class="menu-sub">
-						<li class="menu-item <%= 'active' if request.path == admin_users_path %>">
-							<a href="<%= admin_users_path%>" class="menu-link" data-turbo="false">
-								<div data-i18n="Account">Overview</div>
-							</a>
-						</li>
-					</ul>
-				</li>
-				<!-- Extended components -->
-				<!-- Cards -->
-				<li class="menu-item <%= 'active' if request.path == admin_emails_path || request.path == admin_email_new_path %>">
-					<a href="<%= admin_emails_path %>" class="menu-link" data-turbo="false">
-						<i class="menu-icon tf-icons bx bx-building-house"></i>
-						<div data-i18n="Basic">Accommodations</div>
-					</a>
-				</li>
-				<%#  %>
-				<li class="menu-item <%= 'active' if request.path == admin_emails_path || request.path == admin_email_new_path %>">
-					<a href="<%= admin_emails_path %>" class="menu-link" data-turbo="false">
-						<i class="menu-icon tf-icons bx bx-envelope"></i>
-						<div data-i18n="Basic">Emails</div>
-					</a>
-				</li>
-				<!-- User interface -->
-				<li class="menu-item <%= 'active open' if request.path == admin_settings_account_path || request.path == admin_settings_site_details_path || request.path == admin_settings_password_path %>">
-					<a href="javascript:void(0)" class="menu-link menu-toggle">
-						<i class="menu-icon tf-icons bx bx-cog"></i>
-						<div data-i18n="User interface">Settings</div>
-					</a>
-					<ul class="menu-sub">
-						<li class="menu-item <%= 'active' if request.path == admin_settings_account_path %>">
-							<a href="<%= admin_settings_account_path %>" class="menu-link" data-turbo="false">
-								<div data-i18n="Accordion">Account</div>
-							</a>
-						</li>
-						<li class="menu-item <%= 'active' if request.path == admin_settings_password_path %>">
-							<a href="<%= admin_settings_password_path %>" class="menu-link" data-turbo="false">
-								<div data-i18n="Accordion">Password</div>
-							</a>
-						</li>
-						<%# <li class="menu-item">
+				<% if defined?(@room) && @room.present? %>
+					<li class="menu-item <%= 'active open' if request.path == admin_rooms_path || request.path == edit_admin_room_path(@room) || request.path == admin_room_path(@room) %>">
+					<% else %>
+						<li class="menu-item <%= 'active open' if request.path == admin_rooms_path %>">
+						<% end %>
+						<a href="javascript:void(0);" class="menu-link menu-toggle">
+							<i class="menu-icon tf-icons bx bx-building"></i>
+							<div data-i18n="Account Settings">Rooms</div>
+						</a>
+						<ul class="menu-sub">
+							<li class="menu-item <%= 'active' if request.path == admin_rooms_path %>">
+								<a href="<%= admin_rooms_path %>" class="menu-link" data-turbo="false">
+									<div data-i18n="Account">Overview</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<!-- Extended components -->
+					<!-- Cards -->
+					<li class="menu-item <%= 'active' if request.path == admin_emails_path || request.path == admin_email_new_path %>">
+						<a href="<%= admin_emails_path %>" class="menu-link" data-turbo="false">
+							<i class="menu-icon tf-icons bx bx-building-house"></i>
+							<div data-i18n="Basic">Accommodations</div>
+						</a>
+					</li>
+					<%#  %>
+					<li class="menu-item <%= 'active' if request.path == admin_emails_path || request.path == admin_email_new_path %>">
+						<a href="<%= admin_emails_path %>" class="menu-link" data-turbo="false">
+							<i class="menu-icon tf-icons bx bx-envelope"></i>
+							<div data-i18n="Basic">Emails</div>
+						</a>
+					</li>
+					<!-- User interface -->
+					<li class="menu-item <%= 'active open' if request.path == admin_settings_account_path || request.path == admin_settings_site_details_path || request.path == admin_settings_password_path %>">
+						<a href="javascript:void(0)" class="menu-link menu-toggle">
+							<i class="menu-icon tf-icons bx bx-cog"></i>
+							<div data-i18n="User interface">Settings</div>
+						</a>
+						<ul class="menu-sub">
+							<li class="menu-item <%= 'active' if request.path == admin_settings_account_path %>">
+								<a href="<%= admin_settings_account_path %>" class="menu-link" data-turbo="false">
+									<div data-i18n="Accordion">Account</div>
+								</a>
+							</li>
+							<li class="menu-item <%= 'active' if request.path == admin_settings_password_path %>">
+								<a href="<%= admin_settings_password_path %>" class="menu-link" data-turbo="false">
+									<div data-i18n="Accordion">Password</div>
+								</a>
+							</li>
+							<%# <li class="menu-item">
 					<a href="#" class="menu-link">
 						<div data-i18n="Badges">Subscription Plans</div>
 					</a>
 				</li> %>
-						<li class="menu-item <%= 'active' if request.path == admin_settings_site_details_path %>">
-							<a href="<%= admin_settings_site_details_path %>" class="menu-link" data-turbo="false">
-								<div data-i18n="Carousel">Contact Details</div>
-							</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</aside>
+							<li class="menu-item <%= 'active' if request.path == admin_settings_site_details_path %>">
+								<a href="<%= admin_settings_site_details_path %>" class="menu-link" data-turbo="false">
+									<div data-i18n="Carousel">Contact Details</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</aside>

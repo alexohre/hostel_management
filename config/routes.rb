@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get 'settings/site_details', to: 'setting#site_details'
 
     resources :room_types
+    resources :rooms
   end
 
   devise_for :accounts, controllers: {

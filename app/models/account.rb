@@ -9,7 +9,7 @@ class Account < ApplicationRecord
 
   has_one_attached :avatar, dependent: :destroy
 
-  belongs_to :bed
+  # belongs_to :bed
 
   enum role: [:admin, :portal, :warden, :supervisor]
 
