@@ -13,8 +13,6 @@ puts "user created"
 acc = Account.create!(email: "ella@rose.com", password: 123456, mat_no: "com/ahnd/2024/00234" )
 puts "Account created"
 
-acc.confirm 
-puts "Account confirmed"
 
 puts "creating hostel type.."
 HostelType.create!([{name: "Male Hostel"}, {name: "Female Hostel"}])

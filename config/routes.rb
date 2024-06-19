@@ -20,6 +20,11 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+    resources :accommondations, only: [:index] do
+       member do
+        get :print, defaults: { format: 'pdf' }
+      end
+    end
     resources :payment_methods, only: [:create, :destroy]
 
     resources :currency_pairs, only: [:create, :destroy] do

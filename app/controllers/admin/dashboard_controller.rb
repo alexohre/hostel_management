@@ -2,7 +2,7 @@ class Admin::DashboardController < AdminController
   def home
     @title = "Home"
     @total_acc = Account.count
-    
+    @accommondations = Accommondation.includes(:account).order(id: :desc).limit(5)
     # @recent_deposits = Deposit.includes(:account, :payment_method).order(id: :desc).limit(5)
   end
 

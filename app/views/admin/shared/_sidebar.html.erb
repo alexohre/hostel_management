@@ -38,20 +38,6 @@
 				</ul>
 			</li>
 			<!-- Extended components -->
-			<li class="menu-item <%= 'active open' if request.path == admin_users_path %>">
-				<a href="javascript:void(0);" class="menu-link menu-toggle">
-					<i class="menu-icon tf-icons bx bx-user"></i>
-					<div data-i18n="Account Settings">Staffs</div>
-				</a>
-				<ul class="menu-sub">
-					<li class="menu-item <%= 'active' if request.path == admin_users_path %>">
-						<a href="<%= admin_users_path%>" class="menu-link" data-turbo="false">
-							<div data-i18n="Account">Overview</div>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<!-- Extended components -->
 			<% if defined?(@room_type) && @room_type.present? %>
 				<li class="menu-item <%= 'active open' if request.path == admin_room_types_path || request.path == edit_admin_room_type_path(@room_type) %>">
 				<% else %>
@@ -89,8 +75,8 @@
 					</li>
 					<!-- Extended components -->
 					<!-- Cards -->
-					<li class="menu-item <%= 'active' if request.path == admin_emails_path || request.path == admin_email_new_path %>">
-						<a href="<%= admin_emails_path %>" class="menu-link" data-turbo="false">
+					<li class="menu-item <%= 'active' if request.path == admin_accommondations_path %>">
+						<a href="<%= admin_accommondations_path %>" class="menu-link" data-turbo="false">
 							<i class="menu-icon tf-icons bx bx-building-house"></i>
 							<div data-i18n="Basic">Accommodations</div>
 						</a>
@@ -119,11 +105,6 @@
 									<div data-i18n="Accordion">Password</div>
 								</a>
 							</li>
-							<%# <li class="menu-item">
-					<a href="#" class="menu-link">
-						<div data-i18n="Badges">Subscription Plans</div>
-					</a>
-				</li> %>
 							<li class="menu-item <%= 'active' if request.path == admin_settings_site_details_path %>">
 								<a href="<%= admin_settings_site_details_path %>" class="menu-link" data-turbo="false">
 									<div data-i18n="Carousel">Contact Details</div>

@@ -54,11 +54,6 @@ class Account::AccommondationsController < AccountController
     send_data pdf, filename: "Accommondation_Invoice_#{@accommondation.ref_no}.pdf",
                    type: 'application/pdf',
                    disposition: 'attachment' # or 'attachment' for download
-    # file_name = "Accommondation_Invoice_#{@accommondation.ref_no}.pdf"
-    # file_path = Rails.root.join('public', 'downloads', file_name)
-    # File.open(file_path, 'wb') { |file| file.write(pdf) }
-
-    # redirect_to "/downloads/#{file_name}"
   end
 
   private
