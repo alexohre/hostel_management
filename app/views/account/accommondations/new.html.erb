@@ -1,0 +1,46 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+	<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Bed Space /</span> Reserve a Bed Space </h4>
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+			<%= form_with(model: @accommondation, url: account_accommondations_path, local: true, data: { turbo: false}) do |f| %>
+				<div class="card mb-4">
+					<h5 class="card-header">Reserve Now</h5>
+					<div class="card-body">
+						<div class="mb-3">
+							<label for="exampleFormControlReadOnlyInput1" class="form-label">Hostel</label>
+							<%= f.text_field :hostel_type, value: @hostel_type_name, class: "form-control", readonly: true %>
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlSelect1" class="form-label">Room Type</label>
+							<%= f.select :room_type_id, options_for_select(@room_types.map { |rt| ["#{rt.name} —  ₦#{rt.price}", rt.id] }), { prompt: 'Select Room Type' }, class: "form-select", id: "exampleFormControlSelect1", required: true %>
+						</div>
+					</div>
+				</div>
+				<div class="card mb-4">
+					<h5 class="card-header">Card Information</h5>
+					<div class="card-body">
+						<div class="mb-3">
+							<label for="exampleFormControlReadOnlyInput1" class="form-label">Card No</label>
+							<%= f.text_field :card_no, value: 42424242424242, class: "form-control" %>
+						</div>
+						<div class="mb-4">
+							<div class="row">
+								<div class="col">
+									<label for="exampleFormControlReadOnlyInput1" class="form-label">Exp Date</label>
+									<%= f.text_field :exp_date, value: "06/28", class: "form-control" %>
+								</div>
+								<div class="col">
+									<label for="exampleFormControlReadOnlyInput1" class="form-label">cvv</label>
+									<%= f.text_field :cvv, value: 356, class: "form-control" %>
+								</div>
+							</div>
+						</div>
+						<div class="mb-3">
+							<%= f.submit "Reserve Now", class: "btn btn-primary px-5" %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

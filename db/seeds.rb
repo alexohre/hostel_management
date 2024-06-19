@@ -7,17 +7,17 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "creating user"
-usr = User.create!(email: "hello@test.com", password: 123456)
+User.create!(email: "hello@test.com", password: "password")
 puts "user created"
 
-acc = Account.create!(email: "ella@rose.com", password: 123456 )
+acc = Account.create!(email: "ella@rose.com", password: 123456, mat_no: "com/ahnd/2024/00234" )
 puts "Account created"
 
 acc.confirm 
 puts "Account confirmed"
 
 puts "creating hostel type.."
-hos = HostelType.create!([{name: "Male Hostel"}, {name: "Female Hostel"}])
+HostelType.create!([{name: "Male Hostel"}, {name: "Female Hostel"}])
 puts "hostel type created!"
 
 

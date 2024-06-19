@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   validates :username, presence: true, unless: :new_record?
 
+  enum role: [:admin, :portal, :warden, :supervisor]
+
   private
 
   def generate_username

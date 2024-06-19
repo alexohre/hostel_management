@@ -24,6 +24,9 @@
 							<strong>Last Name:</strong> <%= current_account.last_name.present? ? current_account.last_name : "NIL" %>
 						</div>
 						<div class="mb-3 col-md-6">
+							<strong>Mat No:</strong> <span class="text-uppercase fw-bold text-primary"><%= current_account.mat_no.present? ? current_account.mat_no : "NIL" %></span>
+						</div>
+						<div class="mb-3 col-md-6">
 							<strong>Email:</strong> <%= current_account.email.present? ? current_account.email : "NIL" %>
 						</div>
 						<div class="mb-3 col-md-6">
@@ -37,9 +40,6 @@
 						</div>
 						<div class="mb-3 col-md-6">
 							<strong>State:</strong> <%= current_account.state.present? ? current_account.state : "NIL" %>
-						</div>
-						<div class="mb-3 col-md-6">
-							<strong>Zip Code:</strong> <%= current_account.zip_code.present? ? current_account.zip_code : "NIL" %>
 						</div>
 						<div class="mb-3 col-md-6">
 							<strong>Country:</strong> <%= current_account.country.present? ? current_account.country : "NIL" %>

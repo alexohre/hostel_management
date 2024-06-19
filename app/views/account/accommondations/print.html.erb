@@ -1,0 +1,54 @@
+<div class="invoice">
+	<div class="invoice-header">
+		<div class="invoice-header-left">
+			<%= image_tag("img/dspg_logo.png", alt: "company logo", width: "200") %>
+			<h1>Delta State Polytechnic <br>
+				<small>Ogwashi-uku</small></h1>
+			<p>123 Main Street, Cityville, Country</p>
+			<p>Email: hostel@mydspg.edu.ng</p>
+			<p>Phone: +1 234-567-8901</p>
+		</div>
+		<div class="invoice-header-right">
+			<h2>Invoice</h2>
+			<p>Invoice No: #<%= @accommondation.ref_no %></p>
+			<p>Date: <%= @accommondation.created_at.strftime('%b %d, %Y') %></p>
+		</div>
+	</div>
+	<table class="invoice-table">
+		<thead>
+			<tr>
+				<th>Hostel</th>
+				<th>RoomType</th>
+				<th>Room NO / Bed</th>
+				<th>Session</th>
+				<th>Amount</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= @accommondation.hostel %></td>
+				<td><%= @accommondation.room_type %></td>
+				<td><%= @accommondation.room_no %> / <%= @accommondation.bed %></td>
+				<td><%= @accommondation.session %></td>
+				<td><%= number_to_currency(@accommondation.amount, unit: "₦") %></td>
+			</tr>
+			<!-- Add more items as needed -->
+		</tbody>
+	</table>
+	<div class="invoice-header-left">
+		<% names = @accommondation.account.first_name + " " + @accommondation.account.last_name %>
+		<h2 style="text-transform: uppercase;"><%= @accommondation.account.mat_no %> <br>
+			<h2><%= names %></h2>
+		</h2>
+		<h2></h2>
+		<p>123 Main Street, Cityville, Country</p>
+	</div>
+	<div class="invoice-footer">
+		<p>Thank you!</p>
+	</div>
+	<div class="invoice-total">
+		<p>Subtotal: <%= number_to_currency(@accommondation.amount, unit: "₦") %></p>
+		<p>Tax: <%= number_to_currency(0, unit: "₦") %></p>
+		<p>Total: <%= number_to_currency(@accommondation.amount, unit: "₦") %></p>
+	</div>
+</div>

@@ -1,5 +1,65 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "sign in", new_account_session_path %>
-<br>
-<%= link_to "sign up", new_account_registration_path %>
+<!-- Header-->
+<header class="masthead text-center text-white">
+	<div class="masthead-content">
+		<div class="container px-5">
+			<h1 class="masthead-heading mb-0">Get Ready to be Amazed</h1>
+			<h2 class="masthead-subheading mb-0">Accommodation that Rocks!</h2>
+			<a class="btn btn-primary btn-xl rounded-pill mt-5" href="<%= new_account_session_path %>">Secure a space</a>
+		</div>
+	</div>
+	<%# <div class="bg-circle-1 bg-circle"></div>
+	<div class="bg-circle-2 bg-circle"></div>
+	<div class="bg-circle-3 bg-circle"></div>
+	<div class="bg-circle-4 bg-circle"></div> %>
+</header>
+<!-- Content section 1-->
+<section id="scroll">
+	<div class="container px-5">
+		<div class="row gx-5 align-items-center">
+			<div class="col-lg-6 order-lg-2">
+				<%# <div class="p-5"><img class="img-fluid rounded-circle" src="assets/img/01.jpg" alt="..." /></div> %>
+				<div class="p-5"> <%= image_tag("img/hostel_view.jpg", class: "img-fluid rounded-circle", alt: "image") %></div>
+			</div>
+			<div class="col-lg-6 order-lg-1">
+				<div class="p-5">
+					<h2 class="display-4">Our Facilities that rocks!</h2>
+					<p>School hostel facilities are designed to provide a holistic environment that supports students' academic and personal development. From comfortable accommodation and nutritious meals to study spaces and recreational activities, these facilities ensure that students can thrive in a nurturing and well-equipped setting.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Content section 2-->
+<section>
+	<div class="container px-5">
+		<div class="row gx-5 align-items-center">
+			<div class="col-lg-6">
+				<%# <div class="p-5"><img class="img-fluid rounded-circle" src="assets/img/02.jpg" alt="..." /></div> %>
+				<div class="p-5"> <%= image_tag("img/smile.png", class: "img-fluid rounded-circle", alt: "image") %></div>
+			</div>
+			<div class="col-lg-6">
+				<div class="p-5">
+					<h2 class="display-4">Our Values</h2>
+					<p>Values are the guiding principles that shape our actions, decisions, and overall approach to life. They act as a moral compass, helping us navigate complex situations, build meaningful relationships, and contribute positively to society</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Content section 3-->
+<section>
+	<div class="container px-5">
+		<div class="row gx-5 align-items-center">
+			<div class="col-lg-6 order-lg-2">
+				<%# <div class="p-5"><img class="img-fluid rounded-circle" src="assets/img/03.jpg" alt="..." /></div> %>
+				<div class="p-5"> <%= image_tag("img/room.jpg", class: "img-fluid rounded-circle", alt: "image") %></div>
+			</div>
+			<div class="col-lg-6 order-lg-1">
+				<div class="p-5">
+					<h2 class="display-4">Our Hostel Space!</h2>
+					<p>School hostel spaces hold a special place in the hearts of students, serving as a vibrant blend of home and community. These spaces are more than just living quarters; they are crucibles for personal growth, friendships, and lifelong memories.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

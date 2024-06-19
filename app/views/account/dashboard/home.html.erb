@@ -26,11 +26,11 @@
 						<div class="card-body">
 							<div class="card-title d-flex align-items-start justify-content-between">
 								<div class="avatar flex-shrink-0">
-									<i class="menu-icon fs-2 fw-bold tf-icons bx bx-link"></i>
+									<i class="menu-icon fs-2 fw-bold tf-icons bx bx-time"></i>
 								</div>
 							</div>
-							<span class="fw-semibold d-block mb-1">Links</span>
-							<h3 class="card-title mb-2"><%= 0 %></h3>
+							<span class="fw-semibold d-block mb-1">Time</span>
+							<h3 class="card-title mb-2"><small class="text-info text-sm">Coming soon...!</small></h3>
 						</div>
 					</div>
 				</div>
@@ -39,11 +39,11 @@
 						<div class="card-body">
 							<div class="card-title d-flex align-items-start justify-content-between">
 								<div class="avatar flex-shrink-0">
-									<i class="menu-icon fs-2 fw-bold tf-icons bx bx-link"></i>
+									<i class="menu-icon fs-2 fw-bold tf-icons bx bx-calendar"></i>
 								</div>
 							</div>
-							<span>Clicks</span>
-							<h3 class="card-title text-nowrap mb-1"><%= 0 %></h3>
+							<span>Date</span>
+							<h3 class="card-title text-nowrap mb-1"><%= Date.today.strftime('%b %d, %Y') %></h3>
 						</div>
 					</div>
 				</div>
@@ -51,60 +51,65 @@
 		</div>
 		<!-- Total Revenue -->
 		<div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
-			<div class="card">
-				<div class="row row-bordered g-0">
-					<div class="col">
-						<h5 class="card-header m-0 me-2 pb-3">Recent Deposits</h5>
+			<% unless @has_active_accommondation %>
+				<div class="card">
+					<div class="row row-bordered g-0 text-center">
+						<div class="col">
+							<h5 class="card-header m-0 me-2 pb-3">No Active Accommondation</h5>
+							<%# <div class="btn btn-primary mb-3">Reserve Now</div> %>
+							<%= link_to "Reserve Now", new_account_accommondation_path, class: "btn btn-primary mb-3" %>
+						</div>
 					</div>
 				</div>
-			</div>
-			<%# <div class="card mt-4">
-        <div class="row row-bordered g-0">
-          <div class="col">
-            <h5 class="card-header m-0 me-2 pb-3">(5) Recent Withdrawals</h5>
-            <div class="table-responsive text-nowrap">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Reference</th>
-                    <th>Amount</th>
-                    <th>User</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody class="table-border-bottom-0">
-                  <tr>
-                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>2iksjksmsm</strong></td>
-                    <td>$378</td>
-                    <td>
-                      Albert Cook
-
-                    </td>
-                    <td><span class="badge bg-label-warning me-1">Pending</span></td>
-                    <td>
-                      2023-06-21 11:13:38
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>feksjsmjsj7</strong></td>
-                    <td>$38</td>
-                    <td>
-                      Barry Hunter
-                    </td>
-                    <td><span class="badge bg-label-success me-1">Completed</span></td>
-                    <td>
-                      2023-06-21 11:13:38 
-
-                    </td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div> %>
+			<% else %>
+				<div class="card mt-4">
+					<div class="row row-bordered g-0">
+						<div class="col">
+							<h5 class="card-header m-0 me-2 pb-3">Accommondation(s)</h5>
+							<div class="table-responsive text-nowrap">
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th>Ref No</th>
+											<th>Amount</th>
+											<th>Hostel</th>
+											<th>RoomType</th>
+											<th>Room No</th>
+											<th>Bed</th>
+											<th>Session</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody class="table-border-bottom-0">
+										<% @accommondations.each do |acc| %>
+											<tr>
+												<td><small><%= acc.ref_no %></small></td>
+												<td><%= number_to_currency(acc.amount, unit: "₦") %></td>
+												<td>
+													<%= acc.hostel %>
+												</td>
+												<td>
+													<%= acc.room_type %>
+												</td>
+												<td>
+													<%= acc.room_no %>
+												</td>
+												<td><%= acc.bed%></td>
+												<td>
+													<%= acc.session %>
+												</td>
+												<td>
+													<%= link_to "view", account_accommondations_path, class: "btn btn-info btn-sm"  %>
+												</td>
+											</tr>
+										<% end %>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

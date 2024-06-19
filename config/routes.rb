@@ -2,10 +2,14 @@ Rails.application.routes.draw do
   # constraints(domain: 'bit.sh') do
   #   get '/:short_code', to: 'urls#redirect', as: :bit_redirect
   # end
-  
- 
-  
+    
   namespace :account do
+    resources :accommondations, only: [:index, :new, :create] do
+       member do
+        get :print, defaults: { format: 'pdf' }
+      end
+    end
+
     get 'dashboard', to: 'dashboard#home'
     post 'revert_masquerade', to: "dashboard#revert_masquerade"
     # setting

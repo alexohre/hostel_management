@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_15_194657) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_18_104606) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accommondations", force: :cascade do |t|
+    t.string "ref_no"
+    t.decimal "amount"
+    t.string "hostel"
+    t.string "room_type"
+    t.integer "room_no"
+    t.string "bed"
+    t.boolean "active"
+    t.string "session"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "account_id"
+    t.integer "room_type_id"
+  end
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -41,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_15_194657) do
     t.string "lga"
     t.string "state"
     t.string "country"
+    t.string "mat_no"
     t.index ["confirmation_token"], name: "index_accounts_on_confirmation_token", unique: true
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true

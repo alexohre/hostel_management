@@ -36,6 +36,10 @@
 								<%= f.text_field :last_name, class: "form-control", placeholder: "Doe" %>
 							</div>
 							<div class="mb-3 col-md-6">
+								<%= f.label :mat_no, class: "form-label" %> <span class="text-danger">*</span>
+								<%= f.text_field :mat_no, class: "form-control text-uppercase", readonly: true %>
+							</div>
+							<div class="mb-3 col-md-6">
 								<%= f.label :email, class: "form-label" %> <span class="text-danger">*</span>
 								<%= f.email_field :email, autocomplete: "email", class: "form-control", readonly: true %>
 							</div>

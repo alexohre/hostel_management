@@ -1,6 +1,9 @@
 class Account::DashboardController < AccountController
+  before_action :set_current_accommondations, only: [:home]
+  
   def home
     @title = "Account Dashboard"
+    @accommondations = current_account.accommondations
   end
 
   def revert_masquerade
@@ -16,6 +19,12 @@ class Account::DashboardController < AccountController
       # Handle unauthorized access or non-masquerade mode
       redirect_to admin_dashboard_path, alert: "You are not currently masquerading as another user."
     end
+  end
+
+  private
+
+  def set_current_accommondations
+    @has_active_accommondation = current_account.accommondations.exists?(active: true)
   end
 
 end
